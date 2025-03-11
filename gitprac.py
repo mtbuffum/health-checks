@@ -2,7 +2,7 @@
 import os
 import sys
 import shutil
-
+import socket
 def check_disk_full(disk, min_gb, min_percent):
     """Returns True if there isn't enough disk space, False otherwise."""
     du = shutil.disk_usage(disk)
@@ -23,11 +23,18 @@ def check_root_full():
     """Returns True if the root partition is full, False Otherwise."""
     return check_disk_full(disk="/", min_gb=2, min_percent=10)
 
+def check_no_network():
+    """Returns True if it fails to resolve googles URL, False Otherwise"""
+    try:
+        socket.gethostbyname("www.google.com")
+        return False
+    except:
+        return True
 def main(): 
     checks=[
         (check_reboot, "Pending Reboot"),
         (check_root_full, "Root partition full")
-
+        (check_no_network, "No working Network")
     ]
     everything_ok = True
     
