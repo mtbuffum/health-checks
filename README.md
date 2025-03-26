@@ -27,7 +27,9 @@ You can install `psutil` using pip:
 3. If no issues are found, it prints "Everything ok" and exits successfully.
 4. If any issues are found, the script exits with a status code of 1, indicating failure.
 
-## Usage:
-Simply run the script in your terminal:
+
+
+Note:
+This Repository was made for the Google Certification Python Program on Coursera
 
 
